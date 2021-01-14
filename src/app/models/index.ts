@@ -1,0 +1,1 @@
+export {Imovie, ImovieComponent, Imovies} from './movie.model'

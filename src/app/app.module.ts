@@ -9,6 +9,8 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoggerModule } from 'ngx-logger';
 import { environment } from '../environments/environment';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpConfigInterceptor } from './shared/interceptors/httpconfig.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,9 @@ import { environment } from '../environments/environment';
       serverLogLevel: environment.serverLogLevel
     })
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+  ]
 })
 export class AppModule { }
