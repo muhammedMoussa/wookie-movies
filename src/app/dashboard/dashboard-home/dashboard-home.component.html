@@ -1,58 +1,12 @@
-<!-- <div class="container" fxLayout="row" fxLayoutAlign="center none">
-
-  <div fxFlex="95%">
-    <div class="container" fxLayout="row" fxLayoutAlign="center none">
-      <h2>Welcome back, {{currentUser.fullName}}!</h2>
-    </div>
-
-    <div class="container my-12 mx-auto px-4 md:px-12 mb-4" *ngFor="let movie of movieList" >
-      <div class="w-full">
-        <mat-expansion-panel hideToggle>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{movie[0].genres}}
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div *ngFor="let i of movie" class="flex">
-            <p>{{ i.title }}</p>
-            <app-movie-card></app-movie-card>
-          </div>
-        </mat-expansion-panel>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="container my-12 mx-auto px-4 md:px-12" fxLayout="row">
-  jjjj
-  <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-    <app-movie-card></app-movie-card>
-
-  </div>
-  <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-    <app-movie-card></app-movie-card>
-
-  </div>
-  <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-    <app-movie-card></app-movie-card>
-
-  </div>
-  <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-    <app-movie-card></app-movie-card>
-
-  </div>
-  <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-    <app-movie-card></app-movie-card>
-
-  </div>
-</div> -->
-
 <div class="container my-12 mx-auto px-4 md:px-12">
   <div class="flex flex-wrap -mx-1 lg:-mx-4" *ngFor="let movie of movieList">
     <h3 class="text-3xl">{{movie[0].genres}}</h3>
     <br>
-      <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3"  *ngFor="let i of movie">
-        <app-movie-card></app-movie-card>
-      </div>
+    <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3"  *ngFor="let i of movie">
+      <app-movie-card
+        [movie]="i"
+        (openMovie)="openMovie(i.slug)"
+      ></app-movie-card>
+    </div>
   </div>
 </div>

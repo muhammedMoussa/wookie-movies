@@ -1,13 +1,12 @@
-import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NGXLogger } from 'ngx-logger';
 import { Title } from '@angular/platform-browser';
 import * as _ from 'lodash'
 
 import { MovieDataService } from './../../services/movie-data.service';
-import { NotificationService } from 'src/app/core/services/notification.service';
 import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { Imovie, Imovies, ImovieComponent } from 'src/app/models';
+import { ImovieComponent } from 'src/app/models';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -18,11 +17,12 @@ export class DashboardHomeComponent implements OnInit {
   currentUser: any;
   movieList: ImovieComponent[];
 
-  constructor(private notificationService: NotificationService,
+  constructor(
     private authService: AuthenticationService,
     private titleService: Title,
     private logger: NGXLogger,
-    private movieDataService: MovieDataService
+    private movieDataService: MovieDataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,5 +52,10 @@ export class DashboardHomeComponent implements OnInit {
         console.error(err)
       }
     );
+  }
+
+  openMovie(slug: string) {
+    alert(slug)
+    this.router.navigateByUrl(`icons`)
   }
 }

@@ -44,6 +44,11 @@ const appRoutes: Routes = [
         canActivate: [AuthGuard]
     },
     {
+        path: 'movie/:slug',
+        canActivate: [AuthGuard],
+        loadChildren: '../app/movie/movie.module'
+    },
+    {
         path: '**',
         redirectTo: 'dashboard',
         pathMatch: 'full'
